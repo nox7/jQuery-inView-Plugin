@@ -35,6 +35,7 @@
 
 	// Register to the scroll event
 	$(window).on("scroll", checkWatchedElements);
+	$(window).on("load", checkWatchedElements);
 	// Run the function once to see if the plugin needs to add the class to any currently viewable elements before a scroll event
 	checkWatchedElements();
 }(jQuery));
