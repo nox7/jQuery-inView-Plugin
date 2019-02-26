@@ -16,9 +16,9 @@
 		// Loop through each of the elements gathered by the selector above this scroll event
 		$.each(watchedElements, function(_, obj){
 			// Get the distance from the top of the document to the top of this element
-			var topOfElement = obj[0].offsetTop;
+			var topOfElement = obj.offset().top;
 			// Get the distance from the top of the document to the bottom of this element
-			var bottomOfElement = obj[0].offsetTop + obj.height();
+			var bottomOfElement = obj.offset().top + obj.height();
 
 
 			if (
