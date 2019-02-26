@@ -22,6 +22,7 @@
 		var clientHeight = $(window).height();
 
 		// Loop through each of the elements gathered by the selector above this scroll event
+		var newWatchedElementsList = [];
 		$.each(watchedElements, function(_, obj){
 
 			if (typeof(obj) === "undefined"){
@@ -43,9 +44,13 @@
 			){
 				obj.addClass("is-in-view");
 				obj.trigger("in-view");
-				watchedElements.splice(_, 1);
+			}else{
+				newWatchedElementsList.push(obj);
 			}
 		});
+
+		// Must be changed here, if changed in the loop (spliced) then some elements will be skipped
+		watchedElements = newWatchedElementsList;
 	}
 
 	// Register to the scroll event
