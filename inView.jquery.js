@@ -15,6 +15,11 @@
 
 		// Loop through each of the elements gathered by the selector above this scroll event
 		$.each(watchedElements, function(_, obj){
+
+			if (typeof(obj) === "undefined"){
+				return;
+			}
+
 			// Get the distance from the top of the document to the top of this element
 			var topOfElement = obj.offset().top;
 			// Get the distance from the top of the document to the bottom of this element
@@ -29,6 +34,7 @@
 				(bottomOfElement > currentYScroll && bottomOfElement < currentYScroll + clientHeight)
 			){
 				obj.addClass("is-in-view");
+				watchedElements.splice(_, 1);
 			}
 		});
 	}
