@@ -7,6 +7,14 @@
 		watchedElements.push($(v));
 	});
 
+	// Add the jQuery function "inViewWatcher()"
+	$.fn.extend({
+		inViewWatcher:function(){
+			watchedElements.push(this);
+			return this;
+		}
+	})
+
 	function checkWatchedElements(){
 		// Get the current offset scrolled from the top
 		currentYScroll = (window.pageYOffset || doc.scrollTop)  - (doc.clientTop || 0);
@@ -34,6 +42,7 @@
 				(bottomOfElement > currentYScroll && bottomOfElement < currentYScroll + clientHeight)
 			){
 				obj.addClass("is-in-view");
+				obj.trigger("in-view");
 				watchedElements.splice(_, 1);
 			}
 		});
