@@ -33,8 +33,8 @@ The plugin also adds a new jQuery extension function called inViewWatcher() that
 ```
 
 ```javascript
-$("#example").inViewWatcher().on("in-view", function(){
+$("#example").on("in-view", function(){
    console.log("The element is in the viewport!");
    // Do something here
-});
+}).inViewWatcher();
 ```
